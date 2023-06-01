@@ -6,40 +6,51 @@ function randomValueFromArray(array) {
   const random = Math.floor(Math.random() * array.length);
   return array[random];
 }
-let storyText = It was 94 fahrenheit outside, so : insertx: went for a walk.When they got to: inserty:, they stared in horror for a few moments, then : insertz:.Bob saw the whole thing, but was not surprised — : insertx: weighs 300 pounds, and it was a hot day.
-let insertx = ["Willy the Goblin", "Big Daddy", "Father Christmas"]
-let inserty = ["the soup kitchen", "Disneyland", "the White House"]
-let insertz = ["spontaneously combusted", "melted into a puddle on the sidewalk", "turned into a slug and crawled away"]
+const storyText = It was 94 fahrenheit outside, so : insertx: went for a walk.When they got to: inserty:, they stared in horror for a few moments, then : insertz:.Bob saw the whole thing, but was not surprised — : insertx: weighs 300 pounds, and it was a hot day.
+const insertX = [
+  "Willy the Goblin",
+  "Big Daddy",
+  "Father Christmas"
+]
+const insertX = [
+  "the soup kitchen",
+  "Disneyland",
+  "the White House"
+]
+const insertZ = [
+  "spontaneously combusted",
+  "melted into a puddle on the sidewalk",
+  "turned into a slug and crawled away"
+]
 
 randomize.addEventListener('click', result);
 
 function result() {
+  let newStory = storyText;
+  let xItem = randomValueFromArray(insertX);
+  let yItem = randomValueFromArray(inserty);
+  let zItem = randomValueFromArray(insertZ);
+
+  newStory = newStory.replaceAll(":insertX:", xItem);
+  newStory = newStory.replaceAll(":insertY:", yItem);
+  newStory = newStory.replaceAll(":insertZ:", zItem);
+
 
   if (customName.value !== '') {
     const name = customName.value;
+    newStory = newStory.replace("Bob", name);
 
   }
 
   if (document.getElementById("uk").checked) {
-    const weight = Math.round(300);
-    const temperature = Math.round(94);
-
+    let weight = Math.round(300 * 0.071428571428571) + " stone";
+    let temperature = Math.round((94 - 32) * 5 / 9) + "centigrade";
+    newStory = newStory.replace("94 farenheit", temperature);
+    newStory = newStory.relace("300 pounds", weight);
   }
 
-  story.textContent = ;
+  story.textContent = newStory;
   story.style.visibility = 'visible';
 }
 
-let newStory = storyText;
-let xItem = randomValueFromArray(insertx);
-let yItem = randomValueFromArray(inserty);
-let zItem = randomValueFromArray(insertz);
 
-function newStory(buttonPress); {
-  content.contentString.replace("xItem ", "yItem ", "zItem");
-  newStory.contentString.replace()
-}
-var input = document.getElementById("customname");
-if (input !== input.value) {
-  customname = 'Bob';
-} 
